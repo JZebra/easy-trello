@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import BoardContainer from './components/BoardContainer.jsx';
+import HomeView from './components/HomeView.jsx';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <BoardContainer />
+        <HomeView />
       </div>
     );
   }
