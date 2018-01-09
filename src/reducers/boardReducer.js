@@ -1,6 +1,5 @@
 import {
   CREATE_BOARD,
-  DELETE_BOARD,
 } from '../actions/actionTypes.js';
 
 const initialState = {
@@ -8,23 +7,23 @@ const initialState = {
 };
 
 
-export default (state = initialState, action) => {
+const BoardReducer = (state = initialState, action) => {
+  let newState;
   switch (action.type) {
     case CREATE_BOARD:
-      return {
+      console.log('CREATE_BOARD action hit BoardReducer')
+      newState = {
         ...state,
         isBoardOpen: true
       }
       break;
 
-    case DELETE_BOARD:
-      return {
-        ...state,
-        isBoardOpen: false
-      }
-      break;
-
     default:
-      return state;
+      console.log('default BoardReducer')
+      newState = state;
   }
+
+  return newState;
 }
+
+export default BoardReducer
