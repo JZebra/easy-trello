@@ -1,9 +1,11 @@
 import {
   CREATE_BOARD,
+  SUBMIT_CREATE_BOARD,
+  CANCEL_CREATE_BOARD,
 } from '../actions/actionTypes.js';
 
 const initialState = {
-  isBoardOpen: false
+  isNewBoardFormOpen: false,
 };
 
 
@@ -14,10 +16,23 @@ const BoardReducer = (state = initialState, action) => {
       console.log('CREATE_BOARD action hit BoardReducer')
       newState = {
         ...state,
-        isBoardOpen: true
+        isNewBoardFormOpen: true
       }
       break;
-
+    case SUBMIT_CREATE_BOARD:
+      console.log('SUBMIT_CREATE_BOARD action hit BoardReducer')
+      newState = {
+        ...state,
+        isNewBoardFormOpen: false
+      }
+      break;
+    case CANCEL_CREATE_BOARD:
+      console.log('CANCEL_CREATE_BOARD action hit BoardReducer')
+      newState = {
+        ...state,
+        isNewBoardFormOpen: false
+      }
+      break;
     default:
       console.log('default BoardReducer')
       newState = state;
