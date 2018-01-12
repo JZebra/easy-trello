@@ -23,8 +23,10 @@ const BoardReducer = (state = initialState, action) => {
       console.log('SUBMIT_CREATE_BOARD action hit BoardReducer')
       newState = {
         ...state,
-        isNewBoardFormOpen: false
+        isNewBoardFormOpen: false,
       }
+      // do something with boardtitle here
+      console.log(`new board is ${action.payload.boardTitle}`);
       break;
     case CANCEL_CREATE_BOARD:
       console.log('CANCEL_CREATE_BOARD action hit BoardReducer')

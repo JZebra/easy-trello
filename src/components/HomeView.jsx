@@ -29,7 +29,7 @@ const mapDispatchToProps = dispatch => {
   return {
     createNewBoard: () => dispatch(createBoard()),
     cancelCreateBoard: () => dispatch(cancelCreateBoard()),
-    submitCreateBoard: () => dispatch(submitCreateBoard()),
+    submitCreateBoard: (data) => dispatch(submitCreateBoard(data)),
   }
 }
 

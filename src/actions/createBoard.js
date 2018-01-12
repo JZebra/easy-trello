@@ -12,11 +12,13 @@ const createBoard = () => {
   };
 }
 
-const submitCreateBoard = () => {
+const submitCreateBoard = (boardTitle) => {
   console.log('firing SUBMIT_CREATE_BOARD action');
   return {
     type: SUBMIT_CREATE_BOARD,
-    payload: true
+    payload: {
+      boardTitle: boardTitle
+    }
   };
 }
 
