@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
+import CloseIcon from './CloseIcon.jsx';
 import { colors } from './styles.js';
 
 const Wrapper = styled.div`
@@ -22,14 +24,6 @@ const HeaderText = styled.span`
   align-self: center;
   color: ${colors.gray};
   margin: 0 25% 0 auto;
-`
-
-//temp
-const CloseButton = styled.div`
-  margin: 10px;
-  width: 24px;
-  height: 24px;
-  border: 1px solid red;
 `
 
 const TitleLabel = styled.label`
@@ -85,13 +79,15 @@ class NewBoardForm extends Component {
           <HeaderText>
             Create Board
           </HeaderText>
-          <CloseButton onClick={ this.props.handleClose.bind(this) } />
+          <CloseIcon size="40"
+            color={ colors.gray }
+            handleClick={ this.props.handleClose.bind(this) } />
         </Header>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={ this.handleSubmit }>
           <TitleLabel>Title</TitleLabel>
           <TitleInput type="text"
-            value={this.state.titleValue}
-            onChange={this.handleChange} /><br />
+            value={ this.state.titleValue }
+            onChange={ this.handleChange } /><br />
           <Submit type="submit" value="Create" />
         </form>
       </Wrapper>
