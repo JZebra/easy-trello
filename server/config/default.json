@@ -6,5 +6,75 @@
     "default": 10,
     "max": 50
   },
-  "postgres": "postgres://trello_admin@localhost:5432/easy_trello"
+  "postgres": "postgres://trello_admin@localhost:5432/easy_trello",
+  "authentication": {
+    "secret": "4839521b4148b744bf26d61889a3822522b8c8103822f38df7f4cbc5d50e74aabada462412e7a1175662d2616a2b2a50918feae55660124983f43a5c13e45bbddc5caf2ea0316b8b04f269ef364f68074ec5ad1b59941ebf47713326a559cd59f33512b9a33ea7e688c9897eafeca629be29b318ac8535917e85860ecf234a892283643acc17ca3f56f91897aee5ae714bc771f3b1bd2c8d2f7485eb30c90990f47b30931cc426e19d305d8bcd338befbb169d370700d1dd287cf836fea34a8cf3132b0816ba1bdd98abfac0fbf6c702c3e38715712293ca99190e53c3134f138a21d7e668d0905e9043f2bb868fda081b5ae220d6f70f81bb59726d5da601f8",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "auth0": {
+      "clientID": "your auth0 client id",
+      "clientSecret": "your auth0 client secret",
+      "successRedirect": "/",
+      "domain": "mydomain.auth0.com"
+    },
+    "google": {
+      "clientID": "your google client id",
+      "clientSecret": "your google client secret",
+      "successRedirect": "/",
+      "scope": [
+        "profile openid email"
+      ]
+    },
+    "facebook": {
+      "clientID": "your facebook client id",
+      "clientSecret": "your facebook client secret",
+      "successRedirect": "/",
+      "scope": [
+        "public_profile",
+        "email"
+      ],
+      "profileFields": [
+        "id",
+        "displayName",
+        "first_name",
+        "last_name",
+        "email",
+        "gender",
+        "profileUrl",
+        "birthday",
+        "picture",
+        "permissions"
+      ]
+    },
+    "github": {
+      "clientID": "your github client id",
+      "clientSecret": "your github client secret",
+      "successRedirect": "/"
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  }
 }
