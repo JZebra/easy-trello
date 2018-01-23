@@ -7,9 +7,9 @@ module.exports = {
     all: [ authenticate('jwt') ],
     find: [],
     get: [],
-    create: [processTitle()],
-    update: [processTitle()],
-    patch: [],
+    create: [ processTitle() ],
+    update: [ processTitle() ],
+    patch: [ processTitle() ],
     remove: []
   },
 
