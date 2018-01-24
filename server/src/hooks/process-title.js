@@ -8,14 +8,14 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
       throw new Error('A title is required');
     }
 
-    const user = context.params.user;
+    // const user = context.params.user;
     // truncate title to first 120 characters
     const text = context.data.text.substring(0, 120);
 
     // overwriting the original context is a feathers best practice?
     context.data = {
       text,
-      userId: user._id,
+      // userId: user._id,
       createdAt: new Date().getTime(),
     };
 

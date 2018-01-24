@@ -8,20 +8,30 @@ describe('\'process-title\' hook', () => {
   beforeEach(() => {
     app = feathers();
 
+    // dummy service for testing
     app.use('/dummy', {
-      async get(id) {
-        return { id };
+      async create(data) {
+        return data;
       }
     });
 
+    // add hook to dummy service
     app.service('dummy').hooks({
       before: processTitle()
     });
   });
 
   it('runs the hook', async () => {
-    const result = await app.service('dummy').get('test');
-    
-    assert.deepEqual(result, { id: 'test' });
+    const result = await app.service('dummy').create({
+      text: 'foo'
+    });
+    assert.equal(result.text, 'foo');
+  });
+  it('truncates titles to 120 characters', async () => {
+    const tooLong = 'This title is way to long to display This title is way to long to display This title is way to long to display This title is way to long to display';
+    const result = await app.service('dummy').create({
+      text: tooLong
+    });
+    assert.equal(result.text, tooLong.substr(0, 120));
   });
 });
