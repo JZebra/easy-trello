@@ -6,6 +6,7 @@ import {
   cancelCreateBoard,
   submitCreateBoard
 } from '../actions/createBoard.js';
+import Navbar from './Navbar.js';
 import NewBoardTile from './NewBoardTile.jsx';
 import NewBoardForm from './NewBoardForm.jsx';
 
@@ -13,12 +14,15 @@ import NewBoardForm from './NewBoardForm.jsx';
 // Shows boxes for each board with title, attributes (eg star)
 // shows a box for creating a new board
 const HomeView = ({ board, createNewBoard, cancelCreateBoard, submitCreateBoard }) => {
-  if (board.isNewBoardFormOpen) {
-    return <NewBoardForm handleClose={cancelCreateBoard}
-      handleSubmit={submitCreateBoard} />
-  } else {
-    return <NewBoardTile handleClick={createNewBoard} />
-  }
+  const BoardView = board.isNewBoardFormOpen ?
+    <NewBoardForm handleClose={cancelCreateBoard}
+      handleSubmit={submitCreateBoard} /> :
+    <NewBoardTile handleClick={createNewBoard} />;
+
+  return <div>
+    <Navbar />
+    { BoardView }
+  </div>
 }
 
 const mapStateToProps = ({ board }) => {
